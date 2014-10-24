@@ -2,11 +2,9 @@
 #'
 #' This function defines a new blockspring function.
 #' @param block A function.
-#' @return This function doesn't return anything, it strictly defines a new blockspring function.
-#' @examples
-#' define(myFunction)
+#' @return This function doesn't return anything, it strictly defines a new blockspring function.  
 
- define <- function(block) {
+ blockspringDefine <- function(block) {
   if(missing(block)){
     stop("please pass in a function")
   }

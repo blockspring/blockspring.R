@@ -21,7 +21,7 @@ myBlock <- function(request, response){
 	response$end()
 }
 
-define(myBlock)
+blockspringDefine(myBlock)
 ```
 
 ### License
