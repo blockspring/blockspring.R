@@ -1,0 +1,17 @@
+Package: blockspring
+Title: Easy Access to Your Blockspring Function Library
+Version: 0.1
+Author: Paul Katsen, Don Pinkus, and Jason Tokoph.
+Maintainer: Paul Katsen <paul@blockspring.com>
+Description: Blockspring lets you host your functions in the cloud. This
+    library lets you access them in R.
+Depends:
+    R (>= 3.1.1)
+Imports:
+    httr,
+    RCurl,
+    rjson,
+    R.utils,
+    mime
+License: MIT
+LazyData: true

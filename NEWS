@@ -1,0 +1,6 @@
+blockspring 0.1
+===========
+
+* new 'define' function which creates a new blockspring function.
+
+* new 'run' function which runs blockspring functions.
