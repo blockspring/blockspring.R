@@ -5,7 +5,9 @@ R library to assist in creating and running blocks (cloud functions) with Blocks
 ### Installation
 
 ```R
-install.packages("blockspring")
+install.packages("devtools")
+library("devtools")
+install_github("blockspring/blockspring.R")
 ```
 
 ### Example Usage
