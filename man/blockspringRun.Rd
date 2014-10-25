@@ -10,9 +10,11 @@ blockspringRun(block, data)
 \item{block}{A string.}
 
 \item{data}{A list.}
+
+\item{api_key}{A string.}
 }
 \value{
-This function doesn't return anything, it strictly defines a new blockspring function.
+This function returns the result of running a blockspring block.
 }
 \description{
 This function allows you to run code remotely.

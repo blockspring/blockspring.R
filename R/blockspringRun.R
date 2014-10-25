@@ -3,7 +3,8 @@
 #' This function allows you to run code remotely.
 #' @param block A string.
 #' @param data A list.
-#' @return This function doesn't return anything, it strictly defines a new blockspring function.
+#' @param api_key A string.
+#' @return This function returns the result of running a blockspring block.
 
 
 blockspringRun <- function( block = NULL, data = NULL, api_key = NULL ) {
@@ -12,10 +13,13 @@ blockspringRun <- function( block = NULL, data = NULL, api_key = NULL ) {
   }
   
   if(api_key == "") {
-    stop("BLOCKSPRING_API_KEY environment variable not set")
+    write("Pass in your blockspring api key to increase your limit.", stderr())
   }
 
-  blockspring_url = Sys.getenv("BLOCKSPRING_URL") || "https://sender.blockspring.com"
+  blockspring_url = Sys.getenv("BLOCKSPRING_URL")
+  if (blockspring_url == ""){
+    blockspring_url = "https://sender.blockspring.com"
+  }
 
   block_parts = strsplit(block, "/")
   block = block_parts[[1]][length(block_parts[[1]])]

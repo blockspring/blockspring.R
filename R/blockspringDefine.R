@@ -6,7 +6,7 @@
 
  blockspringDefine <- function(block) {
   if(missing(block)){
-    stop("please pass in a function")
+    stop("your forgot to pass in your function!")
   }
 
   result = list(
