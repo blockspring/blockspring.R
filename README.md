@@ -12,6 +12,7 @@ install_github("blockspring/blockspring.R")
 
 ### Example Usage
 
+Save the following script to an example.R file:
 ```R
 library("blockspring")
 
@@ -24,6 +25,17 @@ myBlock <- function(request, response){
 }
 
 blockspringDefine(myBlock)
+```
+
+Then in your command line write:
+```shell
+Rscript example.R --num1=20 --num2=50
+```
+
+or
+
+```shell
+echo '{"num1":20, "num2": 50}' | Rscript example.R
 ```
 
 ### License
