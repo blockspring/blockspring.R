@@ -45,7 +45,7 @@
   )
 
   processStdin = function(){
-    if(!isatty(stdin())){
+    if(!(isatty(stdin()))){
       stdin = file('stdin')
       data = fromJSON(readLines(stdin))
       request$params <<- data
