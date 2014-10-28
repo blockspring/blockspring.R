@@ -7,13 +7,15 @@
 #' @return This function returns the result of running a blockspring block.
 
 
-blockspringRun <- function( block = NULL, data = NULL, api_key = NULL ) {
-  if(is.null(api_key)){
-    api_key = Sys.getenv("BLOCKSPRING_API_KEY") 
+blockspringRun <- function( block, data = setNames(fromJSON('{}'), character(0)), api_key = NULL ) {
+  if(!(is.list(data))){
+    stop("your data needs to be a list!") 
   }
   
-  if(api_key == "") {
-    write("Pass in your blockspring api key to increase your limit.", stderr())
+  data = toJSON(data)
+  
+  if(is.null(api_key)){
+    api_key = Sys.getenv("BLOCKSPRING_API_KEY") 
   }
 
   blockspring_url = Sys.getenv("BLOCKSPRING_URL")
@@ -21,10 +23,9 @@ blockspringRun <- function( block = NULL, data = NULL, api_key = NULL ) {
     blockspring_url = "https://sender.blockspring.com"
   }
 
-  block_parts = strsplit(block, "/")
-  block = block_parts[[1]][length(block_parts[[1]])]
+  block = tail(strsplit(block,"/")[[1]], n=1)
 
-  response = POST(paste( blockspring_url, "/api_v2/blocks/", block, "?api_key=", api_key, sep = ""), body = data)
+  response = POST(paste( blockspring_url, "/api_v2/blocks/", block, "?api_key=", api_key, sep = ""), accept_json(), add_headers("Content-Type" = "application/json"), body = data)
 
   results = content(response, as="text")
 
