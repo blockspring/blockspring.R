@@ -52,7 +52,7 @@
       stdin = file('stdin')
       
       tryCatch({
-        params = fromJSON(readLines(stdin))
+        params = fromJSON(readLines(stdin, warn = FALSE))
       }, error = function(err){
         stop("You didn't pass valid json inputs.")
       })
