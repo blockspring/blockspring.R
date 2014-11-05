@@ -31,9 +31,9 @@
       filename = basename(filepath)
 
       response$result[[name]] <<- list(
-        filename = filename,
-        mimeType = guess_type(filename),
-        data = base64(data)[[1]]
+        "filename" = filename,
+        "content-type" = guess_type(filename),
+        "data" = base64(data)[[1]]
       )
       close(newFile)
       return(response)
