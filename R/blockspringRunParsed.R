@@ -30,13 +30,21 @@ blockspringRunParsed <- function( block, data = setNames(fromJSON('{}'), charact
   results = content(response, as="text")
 
   tryCatch({
-    parsed_results = fromJSON(results)
-    if ((is.list(parsed_results)) && !is.null(names(parsed_results))) {
-      parsed_results$`_headers` = headers(response)
+    blockspring_parsed_results = fromJSON(results)
+    if (is.list(blockspring_parsed_results)) {
+      if (!is.null(names(blockspring_parsed_results))) {
+        blockspring_parsed_results$`_headers` = headers(response)
+      } else {
+        blockspring_non_list_json = TRUE
+      }
     }
   }, error = function(e) {})
-  if (exists("parsed_results")){
-    return(blockspring::blockspringParse(parsed_results, TRUE))
+  if (exists("blockspring_parsed_results")){
+    if (exists("blockspring_non_list_json")) {
+      return(blockspring_parsed_results)
+    } else {
+      return(blockspring::blockspringParse(blockspring_parsed_results, TRUE))
+    }
   } else {
     return(results)
   }
