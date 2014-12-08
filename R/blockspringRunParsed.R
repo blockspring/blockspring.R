@@ -7,7 +7,7 @@
 #' @return This function returns the result of running a blockspring block.
 
 
-blockspringRun <- function( block, data = setNames(fromJSON('{}'), character(0)), api_key = NULL ) {
+blockspringRunParsed <- function( block, data = setNames(fromJSON('{}'), character(0)), api_key = NULL ) {
   if(!(is.list(data))){
     stop("your data needs to be a list!")
   }
@@ -29,11 +29,15 @@ blockspringRun <- function( block, data = setNames(fromJSON('{}'), character(0))
 
   results = content(response, as="text")
 
-  output = tryCatch({
-    return(fromJSON(results))
-  }, error = function(e) {
+  tryCatch({
+    parsed_results = fromJSON(results)
+    if ((is.list(parsed_results)) && !is.null(names(parsed_results))) {
+      parsed_results$`_headers` = headers(response)
+    }
+  }, error = function(e) {})
+  if (exists("parsed_results")){
+    return(blockspring::blockspringParse(parsed_results, TRUE))
+  } else {
     return(results)
-  })
-
-  return(output)
+  }
 }

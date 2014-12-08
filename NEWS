@@ -1,3 +1,10 @@
+blockspring 0.2
+===========
+
+* new 'blockspringRunParsed' function which runs blockspring functions and then parses output.
+
+* new 'blockspringParse' function which parses Blockspring responses.
+
 blockspring 0.1
 ===========
 
