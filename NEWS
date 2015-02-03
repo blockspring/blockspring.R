@@ -1,3 +1,8 @@
+blockspring 0.3
+===========
+
+* fix 'blockspringParse' bug when dealing with files.
+
 blockspring 0.2
 ===========
 

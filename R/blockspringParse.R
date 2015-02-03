@@ -57,7 +57,7 @@ blockspringParse <- function( input_params, json_parsed = TRUE) {
       else if ((var_name == "_headers") && (is.list(params[[var_name]]))) {
         request$addHeaders(params[[var_name]])
       }
-      else if ((is.list(params[[var_name]])) &&
+      else if ((is.list(params[[var_name]]) && !(is.null(names(params[[var_name]])))) &&
                 (exists("filename", params[[var_name]])) &&
                 (!(is.null(params[[var_name]]$filename))) &&
                  (((exists("data", params[[var_name]])) && !(is.null(params[[var_name]]$data))) ||
