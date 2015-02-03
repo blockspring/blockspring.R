@@ -67,9 +67,9 @@ blockspringParse <- function( input_params, json_parsed = TRUE) {
 
         if(exists("data", params[[var_name]])){
           tryCatch({
-            r = file(tmp_file_path, "wb")
-            writeBin(base64Decode(params[[var_name]][["data"]], mode="raw"), r)
-            r.close()
+            tmp_file = file(tmp_file_path, "wb")
+            writeBin(base64Decode(params[[var_name]][["data"]], mode="raw"), file=tmp_file)
+            close(tmp_file)
             request$params[[var_name]] = tmp_file_path
           },
           error = function(err){
