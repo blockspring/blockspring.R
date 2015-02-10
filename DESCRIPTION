@@ -1,6 +1,6 @@
 Package: blockspring
 Title: Easy Access to Your Blockspring Function Library
-Version: 0.3
+Version: 0.4
 Author: Paul Katsen, Don Pinkus, and Jason Tokoph.
 Maintainer: Paul Katsen <paul@blockspring.com>
 Description: Blockspring lets you host your functions in the cloud. This

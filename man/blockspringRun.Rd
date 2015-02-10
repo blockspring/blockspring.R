@@ -11,7 +11,7 @@ blockspringRun(block, data)
 
 \item{data}{A list.}
 
-\item{api_key}{A string.}
+\item{options}{A list.}
 }
 \value{
 This function returns the result of running a blockspring block.
